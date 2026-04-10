@@ -1,47 +1,41 @@
 package com.sena;
-public class App 
-{
-    public static void main( String[] args )
-    {
-        // 1. Crear hamburguesas usando el constructor vacío
-        Hamburguesa hamburguesa1 = new Hamburguesa();
-        hamburguesa1.setNombre("Hamburguesa Clásica");
-        hamburguesa1.setPrecio(20.000);
-        hamburguesa1.setIngredientes("Carne, queso, lechuga, tomate");
-        hamburguesa1.setCalorias(450);
 
-        // 2. Crear hamburguesas usando el constructor con parámetros
-        Hamburguesa hamburguesa2 = new Hamburguesa(
-            "Hamburguesa Doble", 
-            22.50, 
-            "Doble carne, queso cheddar, tocino, cebolla caramelizada", 
-            850
-        );
+import java.util.ArrayList;
 
-        // 3. Crear hamburguesa con validación (esto lanzará error)
-        // Hamburguesa hamburguesa3 = new Hamburguesa("Hamburguesa", -10.00, "Carne", 300);
-        // IllegalArgumentException: El precio no puede ser negativo
+/**
+ * Hello world!
+ *
+ */
+public class App {
+    public static void main(String[] args) {
+        // 1. creamos objetos usndo el constructor
+        Aprendiz aprendiz1 = new Aprendiz("Juan Perez", "151532552", "juan@correo.com", 20);
+        Aprendiz aprendiz2 = new Aprendiz("Maria Gomez", "151532553", "maria@correo.com", 22);
 
-        // 4. Mostrar información de las hamburguesas
-        System.out.println("=== MENÚ DE HAMBURGUESAS ===\n");
-        
-        System.out.println(hamburguesa1.mostrarDetalles());
-        System.out.println("\n" + "=".repeat(30) + "\n");
-        
-        System.out.println(hamburguesa2.mostrarDetalles());
-        System.out.println("\n" + "=".repeat(30) + "\n");
+        Aprendiz aprendiz3 = new Aprendiz(); // objeto creado con constructor vacio
+        aprendiz3.setNombre("Carlos Rodriguez");
+        aprendiz3.setDocumento("151532554");
+        aprendiz3.setCorreo("carlos@correo.com");
+        aprendiz3.setEdad(25);
 
-        // 5. Modificar datos usando setters
-        System.out.println("=== ACTUALIZANDO PRECIOS ===\n");
-        hamburguesa1.setPrecio(18.99);
-        hamburguesa2.setCalorias(800);
-        
-        System.out.println("Nueva hamburguesa 1: " + hamburguesa1.mostrarDetalles());
-        System.out.println("Nueva hamburguesa 2: " + hamburguesa2.mostrarDetalles());
+        // 2. Creamos una lista para almacenar los aprendices
+        ArrayList<Aprendiz> aprendices = new ArrayList<>();
+        // 3. Agregamos los aprendices a la lista
+        aprendices.add(aprendiz1);
+        aprendices.add(aprendiz2);
+        aprendices.add(aprendiz3);
 
-        // 6. Calcular total de precios
-        double total = hamburguesa1.getPrecio() + hamburguesa2.getPrecio();
-        System.out.println("\n" + "=".repeat(30));
-        System.out.println("TOTAL A PAGAR: $" + total);
+        // 4. Imprimimos los datos de los aprendices
+        for (Aprendiz aprendiz : aprendices) {
+
+            // llama metodo prsentarse
+            System.out.println(aprendiz.presentarse());
+            System.out.println("Nombre: " + aprendiz.getNombre());
+            System.out.println("Documento: " + aprendiz.getDocumento());
+            System.out.println("Correo: " + aprendiz.getCorreo());
+            System.out.println("Edad: " + aprendiz.getEdad());
+            System.out.println("-------------------------");
+        }
+
     }
 }
